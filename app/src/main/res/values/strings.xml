@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">WSDownloader</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="save_successful_message">Saved To Gallery!</string>
+    <string name="save_error_message">Could not save,Try again later</string>
+    <string name="title_pics">Pics</string>
+    <string name="title_videos">Vids</string>
+    <string name="title_videos2">Vids</string>
 </resources>

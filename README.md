@@ -4,6 +4,7 @@
 Overview
 ---
 As the name suggests,the app downloads viewed Whatsapp status updates posted by your friends and family to your Gallery.
+I wrote the app in 47minutes exactly out of boredom. =D
 
 
 Warning
@@ -15,7 +16,7 @@ Warning
     thermonuclear war, or you getting fired because the files got wiped. Please
     do some research if you have any concerns about features included in this app
     before installing it! YOU are choosing to install this application, and if
-    you point the finger at us for messing up your files, We will troll you.
+    you point the finger at us for messing up your files, i will troll you.
         
     A lot.
 
