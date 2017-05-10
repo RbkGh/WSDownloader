@@ -1,12 +1,10 @@
 package com.swiftpot.wsdownloader.adapter;
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,12 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.swiftpot.wsdownloader.HomeActivity;
 import com.swiftpot.wsdownloader.R;
-import com.swiftpot.wsdownloader.widgets.snacky.Snacky;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,12 +24,15 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
+import de.mateware.snacky.Snacky;
+
 /**
  * Created by Ace Programmer Rbk<rodney@swiftpot.com> on 06-May-17
  * 8:24 AM
  */
 public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewMediaAdapter.FileHolder> {
 
+    private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/WSDownloader/";
     private ArrayList<File> filesList;
     private Activity activity;
 
@@ -82,32 +80,40 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
     }
 
     public View.OnClickListener downloadMediaItem(final File sourceFile) {
+
         return new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                try {
-                    //String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/"+ Resources.getSystem().getString(R.string.app_name)+"/";
-                    String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/WSDownloader/";
-                    Log.d("Hello", "onClick:  "+DIRECTORY_TO_SAVE_MEDIA_NOW);
-                    copyFile(sourceFile, new File(DIRECTORY_TO_SAVE_MEDIA_NOW +sourceFile.getName()));
-//                    Snacky.builder().
-//                            setActivty(activity).
-//                            setText(R.string.save_successful_message).
-//                            success().
-//                            show();//
-                    Toast.makeText(activity,R.string.save_successful_message,Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e("RecyclerV", "onClick: Error:"+e.getMessage() );
+                new Runnable(){
 
-//                    Snacky.builder().
-//                            setActivty(activity).
-//                            setText(R.string.save_error_message).
-//                            error().
-//                            show();
-                    Toast.makeText(activity,R.string.save_error_message,Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void run() {
+                        try {
+                            //String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/"+ Resources.getSystem().getString(R.string.app_name)+"/";
+
+                            Log.d("Hello", "onClick:  "+DIRECTORY_TO_SAVE_MEDIA_NOW);
+
+                            copyFile(sourceFile, new File(DIRECTORY_TO_SAVE_MEDIA_NOW +sourceFile.getName()));
+                            Snacky.builder().
+                                    setActivty(activity).
+                                    setText(R.string.save_successful_message).
+                                    success().
+                                    show();//
+                            //Toast.makeText(activity,R.string.save_successful_message,Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.e("RecyclerV", "onClick: Error:"+e.getMessage() );
+
+                            Snacky.builder().
+                                    setActivty(activity).
+                                    setText(R.string.save_error_message).
+                                    error().
+                                    show();
+                            //Toast.makeText(activity,R.string.save_error_message,Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }.run();
             }
         };
     }
@@ -162,7 +168,6 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
             cardViewImageMedia = (CardView) itemView.findViewById(R.id.cardViewImageMedia);
             buttonImageDownload = (Button) itemView.findViewById(R.id.buttonImageDownload);
             buttonVideoDownload = (Button) itemView.findViewById(R.id.buttonVideoDownload);
-
 
             itemView.setOnClickListener(this);
         }

@@ -2,7 +2,7 @@
     <string name="app_name">WSDownloader</string>
     <string name="save_successful_message">Saved To Gallery!</string>
     <string name="save_error_message">Could not save,Try again later</string>
-    <string name="title_pics">Pics</string>
+    <string name="title_pics">You have not watched any whatsapp status currently,Once you watch a whatsapp status,it will automatically show here for you to download</string>
     <string name="title_videos">Vids</string>
     <string name="title_videos2">Vids</string>
 </resources>
