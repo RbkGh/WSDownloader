@@ -5,7 +5,19 @@ Overview
 ---
 As the name suggests,the app downloads viewed Whatsapp status updates posted by your friends and family to your Gallery.
 I wrote the app in 47minutes exactly out of boredom. =D
+#Demonstration  https://github.com/RbkGh/FormHelper.git
+![](https://github.com/RbkGh/WSDownloader/raw/master/descriptionalImages/wsdownloader_demo.gif)
+##Quick Run
 
+Click "Run" in android studio 
+
+OR
+
+from command line :
+
+gradle installDebug
+
+This will install the app on your connected android device.Open app on your device afterwards.
 
 Warning
 ---
