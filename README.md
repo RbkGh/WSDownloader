@@ -36,8 +36,10 @@ Warning
     A lot.
 
 
-Contributors
+Contributions
 -----
+To contribute quickly, head over to "issues" section and fix any issue, then submit a PR. 
+
 Make sure to write your name and email id in format `Name<email>` in the license declaration above every file you make change to. 
 
 Also, take a look at [this guide](https://source.android.com/source/code-style.html) before making changes in code. 
