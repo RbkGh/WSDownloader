@@ -22,6 +22,10 @@ gradle installDebug
 
 This will install the app on your connected android device.Open app on your device afterwards.
 
+OR
+
+[Download Latest Version Of App](https://github.com/RbkGh/WSDownloader/releases/download/v1.0.1/WSDownloader_1.0.1.apk) 
+
 Warning
 ---
 
