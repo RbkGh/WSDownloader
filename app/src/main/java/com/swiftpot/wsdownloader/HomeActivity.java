@@ -32,7 +32,6 @@ public class HomeActivity extends BaseActivity {
         mRecyclerViewMediaList = (RecyclerView) findViewById(R.id.recyclerViewMedia);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewMediaList.setLayoutManager(mLinearLayoutManager);
-        System.out.println("......"+Environment.getExternalStorageDirectory().toString());
         RecyclerViewMediaAdapter recyclerViewMediaAdapter = new RecyclerViewMediaAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+WHATSAPP_STATUSES_LOCATION)), HomeActivity.this);
         mRecyclerViewMediaList.setAdapter(recyclerViewMediaAdapter);
     }
