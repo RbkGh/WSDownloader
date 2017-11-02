@@ -1,6 +1,7 @@
 package com.swiftpot.wsdownloader;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends BaseActivity {
 
-    private static final String WHATSAPP_STATUSES_LOCATION = "/storage/emulated/legacy/WhatsApp/Media/.Statuses";
+    private static final String WHATSAPP_STATUSES_LOCATION = "/WhatsApp/Media/.Statuses";
     private RecyclerView mRecyclerViewMediaList;
     private LinearLayoutManager mLinearLayoutManager;
     public static final String TAG = "Home";
@@ -31,7 +32,8 @@ public class HomeActivity extends BaseActivity {
         mRecyclerViewMediaList = (RecyclerView) findViewById(R.id.recyclerViewMedia);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewMediaList.setLayoutManager(mLinearLayoutManager);
-        RecyclerViewMediaAdapter recyclerViewMediaAdapter = new RecyclerViewMediaAdapter(this.getListFiles(new File(WHATSAPP_STATUSES_LOCATION)), HomeActivity.this);
+        System.out.println("......"+Environment.getExternalStorageDirectory().toString());
+        RecyclerViewMediaAdapter recyclerViewMediaAdapter = new RecyclerViewMediaAdapter(this.getListFiles(new File(Environment.getExternalStorageDirectory().toString()+WHATSAPP_STATUSES_LOCATION)), HomeActivity.this);
         mRecyclerViewMediaList.setAdapter(recyclerViewMediaAdapter);
     }
 
