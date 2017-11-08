@@ -24,7 +24,7 @@ This will install the app on your connected android device.Open app on your devi
 
 OR
 
-[Download Latest Version Of App](https://github.com/RbkGh/WSDownloader/releases/download/1.0.1/WSDownloader_1.0.1.apk) 
+[Download Latest Version Of App](https://github.com/RbkGh/WSDownloader/releases/download/1.0.2/WSDownloader_1.0.2.apk) 
 
 Warning
 ---
