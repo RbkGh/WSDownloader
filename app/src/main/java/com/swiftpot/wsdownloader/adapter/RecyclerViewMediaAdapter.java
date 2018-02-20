@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -32,13 +33,15 @@ import de.mateware.snacky.Snacky;
  */
 public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewMediaAdapter.FileHolder> {
 
-    private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/WSDownloader/";
+  //  private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/WSDownloader/";
+    private static String DIR_FOR_MEDIA = Environment.getExternalStorageDirectory()+"/WSDownloader/";
     private ArrayList<File> filesList;
     private Activity activity;
 
     public RecyclerViewMediaAdapter(ArrayList<File> filesList, Activity activity) {
         this.filesList = filesList;
         this.activity = activity;
+        setHasStableIds(true);
     }
 
     @Override
@@ -79,6 +82,16 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
         return filesList.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     public View.OnClickListener downloadMediaItem(final File sourceFile) {
 
         return new View.OnClickListener() {
@@ -92,9 +105,9 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
                         try {
                             //String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/"+ Resources.getSystem().getString(R.string.app_name)+"/";
 
-                            Log.d("Hello", "onClick:  "+DIRECTORY_TO_SAVE_MEDIA_NOW);
+                            Log.d("Hello", "onClick:  "+DIR_FOR_MEDIA);
 
-                            copyFile(sourceFile, new File(DIRECTORY_TO_SAVE_MEDIA_NOW +sourceFile.getName()));
+                            copyFile(sourceFile, new File(DIR_FOR_MEDIA +sourceFile.getName()));
                             Snacky.builder().
                                     setActivty(activity).
                                     setText(R.string.save_successful_message).
