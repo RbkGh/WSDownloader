@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -32,8 +33,7 @@ import de.mateware.snacky.Snacky;
  */
 public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewMediaAdapter.FileHolder> {
 
-  //  private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/WSDownloader/";
-    private static String DIR_FOR_MEDIA = Environment.getExternalStorageDirectory()+"/WSDownloader/";
+    private static String DIRECTORY_TO_SAVE_MEDIA_NOW = "/WSDownloader/";
     private ArrayList<File> filesList;
     private Activity activity;
 
@@ -81,16 +81,6 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
         return filesList.size();
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
     public View.OnClickListener downloadMediaItem(final File sourceFile) {
 
         return new View.OnClickListener() {
@@ -102,17 +92,12 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
                     @Override
                     public void run() {
                         try {
-                            //String DIRECTORY_TO_SAVE_MEDIA_NOW = "/storage/emulated/legacy/"+ Resources.getSystem().getString(R.string.app_name)+"/";
-
-                            Log.d("Hello", "onClick:  "+DIR_FOR_MEDIA);
-
-                            copyFile(sourceFile, new File(DIR_FOR_MEDIA +sourceFile.getName()));
+                            copyFile(sourceFile, new File(Environment.getExternalStorageDirectory().toString() + DIRECTORY_TO_SAVE_MEDIA_NOW + sourceFile.getName()));
                             Snacky.builder().
                                     setActivty(activity).
                                     setText(R.string.save_successful_message).
                                     success().
-                                    show();//
-                            //Toast.makeText(activity,R.string.save_successful_message,Toast.LENGTH_SHORT).show();
+                                    show();
                         } catch (Exception e) {
                             e.printStackTrace();
                             Log.e("RecyclerV", "onClick: Error:"+e.getMessage() );
@@ -122,7 +107,6 @@ public class RecyclerViewMediaAdapter extends RecyclerView.Adapter<RecyclerViewM
                                     setText(R.string.save_error_message).
                                     error().
                                     show();
-                            //Toast.makeText(activity,R.string.save_error_message,Toast.LENGTH_SHORT).show();
                         }
                     }
                 }.run();
