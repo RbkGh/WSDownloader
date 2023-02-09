@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends BaseActivity {
 
-    private static final String WHATSAPP_STATUSES_LOCATION = "/WhatsApp/Media/.Statuses";
+    private static final String WHATSAPP_STATUSES_LOCATION = "/Android/media/com.whatsapp/WhatsApp/Media/.Statuses";
     private RecyclerView mRecyclerViewMediaList;
     private LinearLayoutManager mLinearLayoutManager;
     public static final String TAG = "Home";
